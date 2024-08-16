@@ -1,7 +1,6 @@
 // app/api/getComponents/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
-// import { PostgrestSingleResponse } from '@supabase/supabase-js';
 
 export async function GET(request: NextRequest) {
     const supabase = createClient();
@@ -30,7 +29,9 @@ export async function GET(request: NextRequest) {
             const commonComponentIds = tagResults.reduce<string[]>(
                 (acc, result) => {
                     const componentIds =
-                        result.data?.map((item) => item.component) || [];
+                        result.data?.map(
+                            (item: { component: string }) => item.component
+                        ) || [];
                     return acc.length === 0
                         ? componentIds
                         : acc.filter((id) => componentIds.includes(id));
@@ -52,7 +53,7 @@ export async function GET(request: NextRequest) {
         // タグの情報を整形し、不要な構造を除去
         const formattedData = data.map((component) => ({
             ...component,
-            tags: component.ui_tag_manager.map((t) => t.tag),
+            tags: component.ui_tag_manager.map((t: { tag: string }) => t.tag),
             ui_tag_manager: undefined, // この行で不要なui_tag_manager構造を除去
         }));
 
