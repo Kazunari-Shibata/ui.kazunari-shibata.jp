@@ -2,12 +2,16 @@ import { Metadata } from 'next';
 import ClientComponents from '../components/ClientComponents';
 
 export const metadata: Metadata = {
-    title: 'UI Components',
-    description: 'A list of UI components',
+    title: 'UI Gallery',
+    description: 'A list of UI',
 };
 
 async function fetchComponents() {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const baseUrl =
+        process.env.NODE_ENV === 'production'
+            ? 'https://ui-kazunari-shibata-jp.vercel.app'
+            : 'http://localhost:3000';
+
     const res = await fetch(`${baseUrl}/api/getComponents`, {
         cache: 'no-store',
     });
@@ -17,9 +21,10 @@ async function fetchComponents() {
     return res.json();
 }
 
-export default async function ComponentsPage() {
+export default async function Home() {
     try {
         const { data: components, count, allTags } = await fetchComponents();
+
         return (
             <ClientComponents
                 initialComponents={components}

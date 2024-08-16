@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
         'app',
         'api',
         'getIframe',
-        'Flowbite',
+        'Bulma',
         'route.html'
     );
     let html;

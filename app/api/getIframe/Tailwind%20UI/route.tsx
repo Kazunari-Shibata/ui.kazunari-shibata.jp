@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
         'app',
         'api',
         'getIframe',
-        'Flowbite',
+        'Tailwind%20UI',
         'route.html'
     );
     let html;

@@ -22,16 +22,6 @@ const ComponentList: React.FC<ComponentListProps> = ({
         );
     }, [filteredComponents]);
 
-    const handleIframeLoad = (index: number) => {
-        const iframe = iframeRefs.current[index];
-        if (iframe) {
-            const parentElement = iframe.parentElement;
-            if (parentElement) {
-                parentElement.classList.remove('loading');
-            }
-        }
-    };
-
     return (
         <div>
             <h2 className="text-xl font-semibold mb-2">Components:</h2>
@@ -68,8 +58,7 @@ const ComponentList: React.FC<ComponentListProps> = ({
                             ref={(el) => (iframeRefs.current[index] = el)}
                             src={`/api/getIframe/${component.framework}?id=${component.id}`}
                             loading="lazy"
-                            className="max-w-60 max-h-60"
-                            onLoad={() => handleIframeLoad(index)}
+                            className="w-60 h-60"
                         ></iframe>
                     </div>
                 ))}
