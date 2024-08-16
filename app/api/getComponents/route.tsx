@@ -1,6 +1,7 @@
-// app/aip / getComponents / route.ts;
+// app/api/getComponents/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
+// import { PostgrestSingleResponse } from '@supabase/supabase-js';
 
 export async function GET(request: NextRequest) {
     const supabase = createClient();
@@ -26,13 +27,16 @@ export async function GET(request: NextRequest) {
             );
 
             const tagResults = await Promise.all(tagQueries);
-            const commonComponentIds = tagResults.reduce((acc, result) => {
-                const componentIds =
-                    result.data?.map((item) => item.component) || [];
-                return acc.length === 0
-                    ? componentIds
-                    : acc.filter((id) => componentIds.includes(id));
-            }, []);
+            const commonComponentIds = tagResults.reduce<string[]>(
+                (acc, result) => {
+                    const componentIds =
+                        result.data?.map((item) => item.component) || [];
+                    return acc.length === 0
+                        ? componentIds
+                        : acc.filter((id) => componentIds.includes(id));
+                },
+                []
+            );
 
             if (commonComponentIds.length > 0) {
                 query = query.in('id', commonComponentIds);
