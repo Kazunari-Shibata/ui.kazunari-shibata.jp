@@ -1,7 +1,7 @@
 @tailwind base;
-@tailwind components;
+/* @tailwind components; */
 @tailwind utilities;
-
+/* 
 @layer base {
   :root {
     --background: 200 20% 98%;
@@ -24,4 +24,4 @@
   * {
     @apply border-foreground/20;
   }
-}
+} */
