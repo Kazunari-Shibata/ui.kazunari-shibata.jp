@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
         'api',
         'getIframe',
         'Bulma',
-        'route.html'
+        'index.html'
     );
     let html;
     try {

@@ -1,0 +1,10 @@
+html {
+    min-width: auto;
+}
+body {
+    padding: var(--padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--height);
+}

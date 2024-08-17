@@ -12,9 +12,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={GeistSans.className}>
+        <html lang="en" className={`${GeistSans.className} light`}>
             <body>
                 <main>{children}</main>
+                <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
             </body>
         </html>
     );

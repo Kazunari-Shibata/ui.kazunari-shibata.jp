@@ -5,12 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{{COMPONENT_NAME}}</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: 'selector',
+            };
+        </script>
         <link
             href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="/static/Variables.css" />
+        <link rel="stylesheet" href="/static/Flowbite.css" />
     </head>
-    <body class="dark:bg-gray-900 antialiased">
+    <body class="bg-white antialiased">
         {{COMPONENT_HTML}}
         <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     </body>
